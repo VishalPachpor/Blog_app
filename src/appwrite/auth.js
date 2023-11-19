@@ -26,6 +26,15 @@ export class AuthService {
     }
   }
 
+  async login({email, password}){
+    try {
+    const loginSeccion = await this.account.createEmailSession(email, password);
+    return loginSeccion;
+    } catch (error) {
+        console.log(`Login error :: ${error}`);
+    }
+  }
+
 
 }
 
