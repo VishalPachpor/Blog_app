@@ -17,6 +17,7 @@ export class AuthService {
         const userAccount =   await this.account.create(ID.unique(), email, password, name);
         if(userAccount){
             // return another methdo
+            return this.login({email, password})
         }else{
             return userAccount
         }
