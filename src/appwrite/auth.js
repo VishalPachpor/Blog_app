@@ -23,7 +23,7 @@ export class AuthService {
         }
 
     } catch (error) {
-        console.log(`Account creation error :: ${error}`);
+        console.log(`Appwrite services :: Account creation error :: ${error}`);
     }
   }
 
@@ -32,9 +32,21 @@ export class AuthService {
     const loginSeccion = await this.account.createEmailSession(email, password);
     return loginSeccion;
     } catch (error) {
-        console.log(`Login error :: ${error}`);
+        console.log(`Appwrite services :: Login error :: ${error}`);
     }
   }
+
+  async getCurrentUser() {
+    try {
+        const currentUser = await this.account.get()
+        
+    } catch (error) {
+        console.log(`Appwrite services :: Current user error :: ${error}`)
+    }
+    return null;
+  }
+
+  
 
 
 }
