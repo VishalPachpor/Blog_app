@@ -32,6 +32,26 @@ export class Service{
         }
     }
 
+    async updatePost(slug,{title, content, featuredImage, status}){
+        try {
+            const updatedpost = await this.database.updateDocument(
+                conf.appwriteDatabaseId,
+                conf.appwriteCollectionId,
+                slug,
+                {
+                    title,
+                    content,
+                    featuredImage,
+                    status,
+                }
+                
+            )
+            
+        } catch (error) {
+            console.log(`Appwrite service :: Update post error :: ${error}`)
+        }
+    }
+
 }
 
 const service = new Service()
