@@ -44,11 +44,26 @@ export class Service{
                     featuredImage,
                     status,
                 }
-                
+
             )
+            return updatedpost;
             
         } catch (error) {
             console.log(`Appwrite service :: Update post error :: ${error}`)
+        }
+    }
+
+    async deletePost(slug){
+        try {
+            await this.database.deleteDocument(
+                conf.appwriteDatabaseId,
+                conf.appwriteCollectionId,
+                slug,
+            )
+            return true
+        } catch (error) {
+            console.log(`Appwrite service :: Delete post error :: ${error}`)
+            return false
         }
     }
 
